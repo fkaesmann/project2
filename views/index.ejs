@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include ./partials/head.ejs %>
+  </head>
+  <body>
+    <center>
+      <div class="header">
+        <h1>Stock Trader</h1>
+      </div>
+    </center>
+
+    <div id="parentContainer">
+      <div id="stockColumn">
+        <% stocks.forEach((stock,index) =>{ %>
+
+        <div class="card" style="width: 50rem;">
+          <h4 class="card-title">
+            Stock: <a href="/show/<%=stock.id%>"> <%=stock.stock%></a>
+          </h4>
+          <h6>Purchase Date: <%=stock.purchaseDate; %></h6>
+          <h5>purchase Price: <%=stock.purchasePrice; %></h5>
+          <h5>sell At Price: <%=stock.sellAtPrice; %></h5>
+        </div>
+        <p></p>
+        <% }) %>
+      </div>
+      <div id="rightMenuColumn">
+        <ul>
+          <li>
+            <% if(currentUser) { %> Welcome </br>
+            <%=currentUser.username%><% } else { %> Welcome! Please <a class="btn btn-primary" href="/sessions/new">Log In</a><%
+            } %>
+          </li>
+          <li><p></p></li>
+          <li><a  class="btn btn-primary"href="/users/new">Add new user</a></li>
+          <li><p></p></li>
+          <li><a class="btn btn-primary" href="/new">Add new Stock</a></li>
+          <li><p></p></li>
+          <li>
+            <% if(currentUser ) { %>
+            <form action="/sessions?_method=DELETE" method="POST">
+              <input class="btn btn-primary" type="submit" value="Logout" />
+            </form>
+            <%}%>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

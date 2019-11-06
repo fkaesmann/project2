@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <% include ./partials/head.ejs %>
+      </head>
+  <body>
+
+    <center>
+        <div class="header">
+          <h1>Stock Trader</h1>
+        </div>
+      </center>
+    <div class="container">
+
+        <div class="card" style="width: 40rem;">
+          <div class="card-body">           
+              <form
+                action="/show/<%=stock._id %>?_method=DELETE"
+                method="POST"
+              >
+          
+                <h4 class="card-title">Stock: <%=stock.stock%></h4>
+                <h6>Purchase Date: <%=stock.purchaseDate; %></h6>
+                <h6>purchase Price: <%=stock.purchasePrice; %></h6>
+                <h5>sell At Price: <%=stock.sellAtPrice; %></h5>
+
+          </div>
+          <div id="delete">
+         
+              <input
+                class="btn btn-outline-danger"
+                type="submit"
+                value="DELETE"
+              />
+            </form>
+
+            <a
+              class="btn btn-outline-success"
+              href="/show/<%=stock.id %>/edit"
+              >Edit</a
+            >
+          </div>
+        </div>
+<p></p>
+
+      <nav>        <a class="btn btn-primary" href="/">Back to stock screen</a>      </nav>
+    </div>
+  </body>
+</html>

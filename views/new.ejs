@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <link
+      href="https://fonts.googleapis.com/css?family=ZCOOL+XiaoWei&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <title>New Stock</title>
+    <style>
+      h1 {
+        text-align: center;
+      }
+      .flex-container {
+        display: flex;
+        flex-direction: row;
+      }
+      .container {
+        /* display: flex; */
+        flex-direction: column;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Create new stock entry</h1>
+    <div class="container">
+      <nav>
+        <a class="btn btn-secondary" href="/">Back to stock list </a>
+      </nav>
+      <div class="flex-container">
+        <form action="/show/new" method="POST">
+          <div class="form-group row">
+            <label for="stock" class="col-sm-2 col-form-label"
+              >Stock symbol:
+            </label>
+            <div class="col-sm-10">
+              <input
+                type="text"
+                class="form-control"
+                id="stock"
+                name="stock"
+                placeholder="Stock symbol "
+              />
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="purchaseDate" class="col-sm-2 col-form-label"
+              >Description:
+            </label>
+            <div class="col-sm-10">
+              <input
+                type="text"
+                class="form-control"
+                id="purchaseDate"
+                name="purchaseDate"
+                placeholder="YYYY/MM/DD"
+              />
+            </div>
+          </div>
+
+          <p></p>
+          <input
+            class="btn btn-primary"
+            type="submit"
+            value="Create New Product Entry"
+          />
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
+
+<!-- price: { type: Number, min: 0 }, qty: { -->
