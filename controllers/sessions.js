@@ -22,9 +22,6 @@ router.get("/new", (req, res) => {
 //   });
 // });
 router.post("/", (req, res) => {
-  // console.log(" ");
-  // console.log(" ");
-
   User.findOne({username: req.body.username}, (err, foundUser) => {
     // console.log("sessions foundUser => ", foundUser);
     if (bcrypt.compareSync(req.body.password, foundUser.password)) {

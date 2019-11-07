@@ -6,6 +6,7 @@ const session = require("express-session");
 const methodOverride = require("method-override");
 const bcrypt = require("bcrypt");
 const request = require("request");
+const rp = require("request-promise");
 const port = 3000;
 lastCloseR = "";
 
@@ -29,45 +30,67 @@ app.use(
 const showController = require("./controllers/show.js");
 const usersController = require("./controllers/users.js");
 const sessionsController = require("./controllers/sessions.js");
+
 app.use("/show", showController);
 app.use("/users", usersController);
 app.use("/sessions", sessionsController);
+handleDataTest = "";
 
 const getStock = stock => {
   let endpoint =
     `https://www.alphavantage.co/query?apikey=S606HP5OS4LQW4TV&function=TIME_SERIES_DAILY_ADJUSTED&symbol=` +
     stock;
-  console.log("endpoint", endpoint);
+  // console.log("endpoint", endpoint);
   let lastClose = "";
-  let body = "";
 
-  request(endpoint, function(error, response, body) {
-    console.log("statusCode: response.statusCode =>", response.statusCode);
-    const responseAPI = JSON.parse(response.body);
-    // let timeSeries = responseAPI.body;
+  const handleData = htmlString => {
+    const responseAPI = JSON.parse(htmlString);
     timeSeries = responseAPI["Time Series (Daily)"];
     for (days in timeSeries) {
       lastClose = timeSeries[days]["4. close"];
       break;
     }
-    console.log("lastClose1 => ", lastClose);
-  });
-  console.log("Body is ", body);
+    handleDataTest = lastClose;
+    lastClose = "abcdefg";
+    return lastClose;
+  };
+
+  rp(endpoint)
+    .then(function(htmlString) {
+      return handleData(htmlString);
+    })
+    .catch(function(err) {
+      // Crawling failed...
+    });
+  console.log("lastClose", lastClose);
+  console.log("handleDataTest", handleDataTest);
+  return handleDataTest;
+
+  // console.log("after rp call", lastClose);
+  // request(endpoint, function(error, response, body) {
+  //   // console.log("statusCode: response.statusCode =>", response.statusCode);
+  //   const responseAPI = JSON.parse(response.body);
+  //   // console.log("responseAPI", responseAPI);
+  //   timeSeries = responseAPI["Time Series (Daily)"];
+  //   // console.log("timeSeries", timeSeries);
+  //   for (days in timeSeries) {
+  //     lastClose = timeSeries[days]["4. close"];
+  //     // console.log("lastClose", lastClose);
+  //     break;
+  //   }
+  //   // return lastClose;
+  //   lastClose = lastClose;
 };
 
 app.get("/", (req, res) => {
   Stock.find({}, (error, allStocks) => {
     let tempAllStocks = allStocks;
-    for (x in tempAllStocks) {
-      // console.log("Stock => ", x, allStocks[x].stock);
-
-      tempStock = tempAllStocks[x].stock;
-      // console.log("tempStock ", tempStock);
-      console.log("Get stock return is ", getStock(tempStock));
-      // tempAllStocks[x]["lastValue"] = getStock(tempAllStocks[x].stock);
-      // console.log("ddd=>", tempAllStocks[x].lastValue);
+    for (x in allStocks) {
+      tempStock = allStocks[x].stock;
+      allStocks[x].fred = "fredK";
     }
-    // console.log("in app.get / allStocks =>", tempAllStocks);
+
+    console.log("allStocks =>", allStocks);
     if (error) {
       res.send(error);
     } else {
