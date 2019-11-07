@@ -7,7 +7,9 @@ const methodOverride = require("method-override");
 const bcrypt = require("bcrypt");
 const request = require("request");
 const rp = require("request-promise");
-const port = 3000;
+// const port = 3000;
+// Allow use of Heroku's port or your own local port, depending on the environment
+const PORT = process.env.PORT || 3000;
 lastCloseR = "";
 
 // MIDDLEWARE
@@ -87,10 +89,9 @@ app.get("/", (req, res) => {
     let tempAllStocks = allStocks;
     for (x in allStocks) {
       tempStock = allStocks[x].stock;
-      allStocks[x].fred = "fredK";
     }
 
-    console.log("allStocks =>", allStocks);
+    // console.log("allStocks =>", allStocks);
     if (error) {
       res.send(error);
     } else {
@@ -138,11 +139,19 @@ app.get("/new", (req, res) => {
 });
 
 // CONNECTIONS
-app.listen(port, () => {
-  console.log("listening on port: ", port);
+app.listen(PORT, () => {
+  console.log("listening on PORT: ", PORT);
 });
 
-mongoose.connect("mongodb://localhost:27017/stock");
+const MONGODB_URI =
+  process.env.MONGODB_URI || "mongodb://localhost:27017/stock";
+
+// mongoose.connect("mongodb://localhost:27017/stock");
+// Connect to Mongo
+mongoose.connect(MONGODB_URI, {useNewUrlParser: true}, () => {
+  console.log("connected to mongo database");
+});
+
 mongoose.connection.once("open", () => {
   console.log("connected to mongo");
 });
