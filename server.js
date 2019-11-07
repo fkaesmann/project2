@@ -57,13 +57,13 @@ const getStock = stock => {
     return lastClose;
   };
 
-  rp(endpoint)
-    .then(function(htmlString) {
-      return handleData(htmlString);
-    })
-    .catch(function(err) {
-      // Crawling failed...
-    });
+  // rp(endpoint)
+  //   .then(function(htmlString) {
+  //     return handleData(htmlString);
+  //   })
+  //   .catch(function(err) {
+  //     // Crawling failed...
+  //   });
   console.log("lastClose", lastClose);
   console.log("handleDataTest", handleDataTest);
   return handleDataTest;
