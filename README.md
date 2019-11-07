@@ -2,9 +2,9 @@
 
 GA project 2
 
-GA project 2, called stockTracker, is a strock tracking application that is password protected with session keys. stockTracker allows users to create new user ID's and add new stock tickers to track.
+Called stockTracker, is a stock tracking application that is password protected with session keys. stockTracker allows users to create new user ID's and add new stocks to track.
 
-Functionality inlcudes full CRUD with index listing, create new persons and stocks, update stocks, and delete stocks. Update persons and delete persons is not included.
+Functionality inlcudes full CRUD with an index, create new users and stocks, update stocks, and delete stocks. Update persons and delete persons is not included.
 
 ### Developer
 
@@ -44,10 +44,12 @@ xxx
 - Mongo
 - Mongoose
 
-import
 ```
 
-### Node
+## import
+
+```
+Node
 
 npm init -y
 npm i express ejs
@@ -57,10 +59,12 @@ npm install bcrypt --save
 npm install request --save
 npm install request-promise --save
 
-### Mongo
+Mongo
 
 npm install mongoose
 echo DBQuery.prototype.\_prettyShell = true >> ~/.mongorc.js
+
+```
 
 ## Key Code Functions
 
@@ -77,13 +81,21 @@ echo DBQuery.prototype.\_prettyShell = true >> ~/.mongorc.js
 
 ```
 
+## Main problems
+
+```
+The main functionality that I could not get working was to call an current stock API from Express.  
+Even using the "npm request-promise" package, I had difficulties getting the value out of the anonymous function and into my code.  The issue seems to be with the scope of calling fucntions within functions.
+
+```
+
 ## Credits
 
 ```
-1. w3schools.com https://www.w3schools.com/
-2. News API https://newsapi.org/
-3. stack overflow https://stackoverflow.com/
-4. surge https://surge.sh/
+- w3schools.com https://www.w3schools.com/
+- stack overflow https://stackoverflow.com/
+- Bootstrap https://getbootstrap.com/
+- Mongo database https://www.mongodb.com/
 ```
 
 ## Authors and acknowledgment
