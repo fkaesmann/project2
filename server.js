@@ -45,17 +45,17 @@ const getStock = stock => {
   // console.log("endpoint", endpoint);
   let lastClose = "";
 
-  const handleData = htmlString => {
-    const responseAPI = JSON.parse(htmlString);
-    timeSeries = responseAPI["Time Series (Daily)"];
-    for (days in timeSeries) {
-      lastClose = timeSeries[days]["4. close"];
-      break;
-    }
-    handleDataTest = lastClose;
-    lastClose = "abcdefg";
-    return lastClose;
-  };
+  // const handleData = htmlString => {
+  //   const responseAPI = JSON.parse(htmlString);
+  //   timeSeries = responseAPI["Time Series (Daily)"];
+  //   for (days in timeSeries) {
+  //     lastClose = timeSeries[days]["4. close"];
+  //     break;
+  //   }
+  //   handleDataTest = lastClose;
+  //   lastClose = "abcdefg";
+  //   return lastClose;
+  // };
 
   // rp(endpoint)
   //   .then(function(htmlString) {
