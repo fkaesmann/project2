@@ -2,9 +2,25 @@
 <html>
   <head>
     <% include ./partials/head.ejs %>
+    <style>
+      .header {
+        /* display: flex; */
+        position: sticky;
+        top: 0;
+        background-color: #d48166;
+        padding: 10px;
+        font-family: "Montserrat", helvetica;
+        font-size: 0.9em;
+        align-items: center;
+      }
+    </style>
   </head>
   <body>
-    <h1>Edit Stock</h1>
+    <center>
+      <div class="header">
+        <h1>Edit Stock</h1>
+      </div>
+    </center>
 
     <div class="container">
       <form
@@ -42,11 +58,11 @@
 
         <div class="form-group row">
           <label for="purchasePrice" class="col-sm-2 col-form-label"
-            >Price:
+            >Purchase Price:
           </label>
           <div class="col-sm-10">
             <input
-              type="number"
+              type="integer"
               class="form-control"
               name="purchasePrice"
               id="purchasePrice"
@@ -57,7 +73,7 @@
 
         <div class="form-group row">
           <label for="sellAtPrice" class="col-sm-2 col-form-label"
-            >Price:
+            >Sell At Price:
           </label>
           <div class="col-sm-10">
             <input
@@ -72,9 +88,10 @@
 
         <input class="btn btn-primary" type="submit" value="Submit Changes" />
       </form>
+      <p></p>
+      <nav>
+        <a class="btn btn-secondary" href="/">Back to Stock Screen</a>
+      </nav>
     </div>
-    <nav>
-      <a class="btn btn-primary" href="/">Back to stock list</a>
-    </nav>
   </body>
 </html>

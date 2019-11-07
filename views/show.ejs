@@ -2,14 +2,26 @@
 <html>
     <head>
         <% include ./partials/head.ejs %>
+        <link rel="stylesheet" href="css/style.css" />
+        <style>
+        .header {
+  /* display: flex; */
+  position: sticky;
+  top: 0;
+  background-color: #d48166;
+  padding: 10px;
+  font-family: "Montserrat", helvetica;
+  font-size: 0.9em;
+  align-items: center;
+}
+</style>
       </head>
-  <body>
-
-    <center>
-        <div class="header">
-          <h1>Stock Trader</h1>
-        </div>
-      </center>
+      <body>
+        <center>
+          <header class="header">
+            <h1>Stock Trader</h1>
+          </header>
+        </center>
     <div class="container">
 
         <div class="card" style="width: 40rem;">
@@ -22,7 +34,7 @@
                 <h4 class="card-title">Stock: <%=stock.stock%></h4>
                 <h6>Purchase Date: <%=stock.purchaseDate; %></h6>
                 <h6>purchase Price: <%=stock.purchasePrice; %></h6>
-                <h5>sell At Price: <%=stock.sellAtPrice; %></h5>
+                <h6>sell At Price: <%=stock.sellAtPrice; %></h6>
 
           </div>
           <div id="delete">
@@ -43,7 +55,7 @@
         </div>
 <p></p>
 
-      <nav>        <a class="btn btn-primary" href="/">Back to stock screen</a>      </nav>
+      <nav>        <a class="btn btn-secondary" href="/">Back to Stock Screen</a>      </nav>
     </div>
   </body>
 </html>

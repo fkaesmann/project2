@@ -37,23 +37,22 @@ const getStock = stock => {
   let endpoint =
     `https://www.alphavantage.co/query?apikey=S606HP5OS4LQW4TV&function=TIME_SERIES_DAILY_ADJUSTED&symbol=` +
     stock;
-  // console.log("endpoint", endpoint);
-  let rrr = "";
-  request(endpoint, function(error, response, body, rrr) {
+  console.log("endpoint", endpoint);
+  let lastClose = "";
+  let body = "";
+
+  request(endpoint, function(error, response, body) {
     console.log("statusCode: response.statusCode =>", response.statusCode);
-
     const responseAPI = JSON.parse(response.body);
-    let lastClose = "";
-    let tester = responseAPI.body;
-    tester = responseAPI["Time Series (Daily)"];
-
-    for (x in tester) {
-      lastClose = tester[x]["4. close"];
+    // let timeSeries = responseAPI.body;
+    timeSeries = responseAPI["Time Series (Daily)"];
+    for (days in timeSeries) {
+      lastClose = timeSeries[days]["4. close"];
       break;
     }
-    // console.log("lastClose => ", lastClose);
-    lastCloseR = lastClose;
+    console.log("lastClose1 => ", lastClose);
   });
+  console.log("Body is ", body);
 };
 
 app.get("/", (req, res) => {
@@ -124,36 +123,3 @@ mongoose.connect("mongodb://localhost:27017/stock");
 mongoose.connection.once("open", () => {
   console.log("connected to mongo");
 });
-
-// const getStock = stock => {
-//   let endpoint =
-//     `https://www.alphavantage.co/query?apikey=S606HP5OS4LQW4TV&function=TIME_SERIES_DAILY_ADJUSTED&symbol=` +
-//     stock;
-
-//   request(endpoint, function(error, response, body) {
-//     // console.log("error:", error); // Print the error if one occurred
-//     // console.log("statusCode:", response && response.statusCode);
-//     // console.log("statusCode: response.body =>", response.body);
-//     console.log("statusCode: response.statusCode =>", response.statusCode);
-
-//     const responseAPI = JSON.parse(response.body);
-//     let lastClose = "";
-//     let tester = responseAPI.body;
-//     tester = responseAPI["Time Series (Daily)"];
-
-//     for (x in tester) {
-//       lastClose = tester[x]["4. close"];
-
-//       break;
-//     }
-//     console.log("lastClose => ", lastClose);
-//     return lastClose;
-//   });
-// };
-
-// let endpoint = `https://www.alphavantage.co/query?apikey=S606HP5OS4LQW4TV&function=TIME_SERIES_DAILY_ADJUSTED&symbol=GE`;
-// let endpoint =
-//   `https://www.alphavantage.co/query?apikey=S606HP5OS4LQW4TV&function=TIME_SERIES_DAILY_ADJUSTED&symbol=` +
-//   "GE";
-
-// console.log("getStock => ", getStock("GE"));

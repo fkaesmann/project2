@@ -12,33 +12,52 @@
 
     <div id="parentContainer">
       <div id="stockColumn">
+          <% if(currentUser) { %> 
         <% stocks.forEach((stock,index) =>{ %>
-
-        <div class="card" style="width: 50rem;">
+        <div class="card" style="width: 100%;">
           <h4 class="card-title">
             Stock: <a href="/show/<%=stock.id%>"> <%=stock.stock%></a>
           </h4>
           <h6>Purchase Date: <%=stock.purchaseDate; %></h6>
-          <h5>purchase Price: <%=stock.purchasePrice; %></h5>
-          <h5>sell At Price: <%=stock.sellAtPrice; %></h5>
+          <h6>purchase Price: <%=stock.purchasePrice; %></h6>
+          <h6>sell At Price: <%=stock.sellAtPrice; %></h6>
         </div>
         <p></p>
         <% }) %>
+        <% } else {%>
+        <h2>You must login to see your stocks</h2>
+        <% } %>
       </div>
       <div id="rightMenuColumn">
         <ul>
           <li>
             <% if(currentUser) { %> Welcome </br>
-            <%=currentUser.username%><% } else { %> Welcome! Please <a class="btn btn-primary" href="/sessions/new">Log In</a><%
+            <%=currentUser.username%><% } 
+            else { %> Please log in</br>
+          
+            <p></p>
+            
+      <form action="/sessions" method="POST">
+        <div class="form-group">
+          <input type="text" class="form-control" name="username" placeholder="username" />
+       </div>
+       <div class="form-group">
+       <input type="password" class="form-control" name="password" placeholder="password" />
+      </div>
+      <input class="btn btn-secondary" type="submit" value="Log In" />
+    </form>
+            
+              
+            <%
             } %>
           </li>
           <li><p></p></li>
-          <li><a  class="btn btn-primary"href="/users/new">Add new user</a></li>
+          <li><a  class="btn btn-primary" href="/users/new">Add new user</a></li>
           <li><p></p></li>
           <li><a class="btn btn-primary" href="/new">Add new Stock</a></li>
           <li><p></p></li>
           <li>
-            <% if(currentUser ) { %>
+            <% if(currentUser) { %>
             <form action="/sessions?_method=DELETE" method="POST">
               <input class="btn btn-primary" type="submit" value="Logout" />
             </form>
