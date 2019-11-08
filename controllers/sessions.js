@@ -23,6 +23,7 @@ router.get("/new", (req, res) => {
 // });
 router.post("/", (req, res) => {
   User.findOne({username: req.body.username}, (err, foundUser) => {
+    console.log("foundUser.username", foundUser.username);
     if (bcrypt.compareSync(req.body.password, foundUser.password)) {
       req.session.currentUser = foundUser;
       res.redirect("/");

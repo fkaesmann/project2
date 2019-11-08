@@ -24,16 +24,7 @@ body {
   margin: 50px auto;
   text-align: center;
 }
-.main > img {
-  border-radius: 20px;
-  opacity: 0.9;
-  width: 100%;
-}
-.main h1 {
-  color: #444;
-  text-transform: uppercase;
-  border-bottom: 5px solid #f6ab32;
-}
+
 .main textarea {
   min-width: 100%;
   max-width: 100%;
@@ -60,9 +51,9 @@ body {
   align-items: center;
 }
 #parentContainer {
-  background-color: white;
+  background-color: #e6e2dd;
   width: 100vw;
-  height: 91vh;
+  height: 100vw;
   display: flex;
 }
 
