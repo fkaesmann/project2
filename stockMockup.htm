@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Stock Tracker</title>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+      charset="utf-8"
+    ></script>
+    <script src="app.js" charset="utf-8"></script>
+    <style>
+      body {
+        border: 0;
+        margin: 0;
+        padding: 0;
+      }
+
+      #parentContainer {
+        background-color: white;
+        width: 100vw;
+        height: 91vh;
+        display: flex;
+      }
+
+      #rightMenuColumn {
+        flex: 1;
+        display: flex;
+        padding: 1px;
+        background-color: #5a7670;
+        min-width: 20vh;
+        order: inherit;
+        justify-content: center;
+      }
+
+      #stockColumn {
+        background-color: #e6e2dd;
+        flex: 5;
+        display: flex;
+        flex-direction: column;
+        order: inherit;
+      }
+
+      a:visited {
+        color: white;
+        text-decoration: none;
+      }
+
+      a:link {
+        text-decoration: none;
+      }
+
+      #header {
+        display: flex;
+        background-color: #d48166;
+
+        min-height: 10vh;
+        order: 1;
+        color: white;
+        position: sticky;
+        top: 0;
+        justify-content: center;
+      }
+
+      #menuNav {
+        flex: 1;
+        background-color: #373a36;
+        min-height: 10vh;
+        order: 2;
+        color: white;
+        position: sticky;
+
+        justify-content: center;
+      }
+
+      .articleListImage {
+        display: flex;
+        flex-flow: row wrap;
+        padding: 0px;
+      }
+
+      img {
+        width: 100%;
+      }
+
+      #articleList {
+        background-color: rgb(167, 220, 233);
+        flex: 1;
+        margin: 0px;
+        min-width: 40vh;
+        height: 400px;
+        overflow: scroll;
+        font-size: 21px;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      p {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .footer {
+        background-color: rgb(143, 201, 224);
+        color: white;
+        flex: 1;
+        max-height: 8vh;
+        margin: 1px;
+        font-size: 20px;
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: center;
+        color: blue;
+      }
+
+      .hideMe {
+        display: none;
+      }
+
+      #hideForPrint {
+        display: none;
+        width: 80%;
+      }
+
+      @media print {
+        #parentContainer {
+          display: none;
+        }
+        #hideForPrint {
+          display: block;
+        }
+      }
+
+      #printPage {
+        cursor: progress;
+      }
+
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <center>
+      <header id="header">
+        <h1>Stock Tracker</h1>
+      </header>
+
+      <div id="parentContainer">
+        <div id="stockColumn">
+          Fred3 was here
+        </div>
+        <!-- Above is end of stockColumn -->
+        <div id="rightMenuColumn">
+          <form>
+            <input
+              type="text"
+              class="search"
+              id="search"
+              placeholder="Search"
+            />
+          </form>
+        </div>
+        <!-- above is end of rightMenuColumn -->
+      </div>
+      <div id="hideForPrint"></div>
+    </center>
+  </body>
+</html>
